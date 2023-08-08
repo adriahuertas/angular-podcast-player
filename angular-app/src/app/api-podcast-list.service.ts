@@ -5,13 +5,21 @@ import { map } from 'rxjs/operators';
 
 import { have24HoursPassed } from './date-utilities';
 
+// Interface to select only the needed attributes to our PodcastListComponent
+interface PodcastData {
+  id: string;
+  name: string;
+  author: string;
+  image: string;
+}
+
 @Injectable({
   providedIn: 'root',
 })
 export class ApiPodcastListService {
   private url: string =
     'https://itunes.apple.com/us/rss/toppodcasts/limit=100/genre=1310/json';
-  public podcastData: Array<{}> = [];
+  public podcastData: Array<PodcastData> = [];
 
   // Keys to use in localStorage
   private fetchingDateKey: string = 'fetchingDate';
@@ -38,7 +46,13 @@ export class ApiPodcastListService {
     console.log('Fetching data from API');
     return this.http.get<any>(this.url).pipe(
       map((response) => {
-        this.podcastData = response.feed.entry;
+        this.podcastData = response.feed.entry.map((item: any) => ({
+          id: item['id']['attributes']['im:id'],
+          name: item['im:name'].label,
+          author: item['im:artist'].label,
+          image: item['im:image'][0].label,
+        }));
+
         // Save data to localStorage
         localStorage.setItem(
           this.podcastDataKey,
