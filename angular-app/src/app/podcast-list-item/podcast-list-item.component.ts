@@ -14,11 +14,14 @@ export class PodcastListItemComponent {
     title: '',
     author: '',
     image: '',
+    description: '',
   };
 
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   handlePodcastClick(): void {
-    this.router.navigate(['/podcast', this.podcast.id]);
+    this.router.navigate(['/podcast', this.podcast.id], {
+      state: { podcast: this.podcast },
+    });
   }
 }

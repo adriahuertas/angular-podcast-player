@@ -46,6 +46,7 @@ export class ApiPodcastListService {
           title: item['im:name'].label,
           author: item['im:artist'].label,
           image: item['im:image'][0].label,
+          description: item['summary'].label,
         }));
 
         // Save data to localStorage
