@@ -1,7 +1,7 @@
-<h3>Podcast List</h3>
-
-<ul>
-  <li *ngFor="let item of podcastData">
-    {{ item }}
-  </li>
-</ul>
+<div class="list">
+  <h3>Podcast List</h3>
+  <app-podcast-list-item
+    *ngFor="let podcast of podcasts"
+    [podcast]="podcast"
+  ></app-podcast-list-item>
+</div>

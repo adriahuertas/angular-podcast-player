@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiPodcastListService } from '../api-podcast-list.service';
 
+import { PodcastData } from '../../interfaces';
+
 @Component({
   selector: 'app-podcast-list',
   templateUrl: './podcast-list.component.html',
@@ -8,16 +10,16 @@ import { ApiPodcastListService } from '../api-podcast-list.service';
 })
 export class PodcastListComponent implements OnInit {
   isLoading: boolean = false;
-  podcastData: Array<{}> = [];
+  podcasts: Array<PodcastData> = [];
 
   constructor(private apiPodcastListService: ApiPodcastListService) {}
   // When mounting the component
   ngOnInit(): void {
     this.isLoading = true;
     this.apiPodcastListService.fetchPodcastListData().subscribe((data) => {
-      this.podcastData = data;
+      this.podcasts = data;
       this.isLoading = false;
-      console.log(this.podcastData);
+      console.log(this.podcasts);
     });
   }
 }

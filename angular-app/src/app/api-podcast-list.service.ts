@@ -4,14 +4,9 @@ import { Observable, of } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { have24HoursPassed } from './date-utilities';
+import { PodcastData } from '../interfaces';
 
 // Interface to select only the needed attributes to our PodcastListComponent
-interface PodcastData {
-  id: string;
-  name: string;
-  author: string;
-  image: string;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -48,7 +43,7 @@ export class ApiPodcastListService {
       map((response) => {
         this.podcastData = response.feed.entry.map((item: any) => ({
           id: item['id']['attributes']['im:id'],
-          name: item['im:name'].label,
+          title: item['im:name'].label,
           author: item['im:artist'].label,
           image: item['im:image'][0].label,
         }));
