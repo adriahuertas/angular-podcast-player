@@ -1,26 +1,29 @@
-<div (click)="handleReturnToPodcastDetailsClick()">
-  <img src="{{ receivedPodcast.image }}" />
-  <p>{{ receivedPodcast.title }}</p>
-  <p>{{ receivedPodcast.description }}</p>
-</div>
-<div>
-  <div *ngIf="!episodeSelected">
-    <p>Episodes: {{podcastDetails.episodeNumber}}</p>
-    <div>
-      <ul *ngFor="let episode of podcastDetails.episodeList">
-        <li (click)="handleEpisodeClick(episode)">{{episode.title}}</li>
-       <li>{{episode.date}}</li>
-       <li>{{episode.duration}}</li>
-      </ul>
+<div *ngIf="!isLoading">
+  <div (click)="handleReturnToPodcastDetailsClick()">
+    <img src="{{ receivedPodcast.image }}" />
+    <p>{{ receivedPodcast.title }}</p>
+    <p>{{ receivedPodcast.description }}</p>
+  </div>
+  <div>
+    <div *ngIf="!episodeSelected">
+      <p>Episodes: {{podcastDetails.episodeNumber}}</p>
+      <div>
+        <ul *ngFor="let episode of podcastDetails.episodeList">
+          <li (click)="handleEpisodeClick(episode)">{{episode.title}}</li>
+          <li>{{episode.date}}</li>
+          <li>{{episode.duration}}</li>
+        </ul>
+      </div>
+    </div>
+    <div *ngIf="episodeSelected">
+      <h3>{{episodeSelected.title}}</h3>
+      <p>{{episodeSelected.description}}</p>
+      <audio controls>
+        <source src="{{episodeSelected.url}}" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+
     </div>
   </div>
-  <div *ngIf="episodeSelected">
-    <h3>{{episodeSelected.title}}</h3>
-    <p>{{episodeSelected.description}}</p>
-    <audio controls>
-      <source src="{{episodeSelected.url}}" type="audio/mpeg">
-      Your browser does not support the audio element.
-    </audio>
-    
-  </div>
 </div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

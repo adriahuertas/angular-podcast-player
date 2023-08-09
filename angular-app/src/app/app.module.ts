@@ -9,9 +9,10 @@ import { PodcastListItemComponent } from './podcast-list-item/podcast-list-item.
 import { PodcastDetailsComponent } from './podcast-details/podcast-details.component';
 import { FormsModule } from '@angular/forms';
 import { FilterPodcastsPipe } from './filter-podcasts.pipe';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 @NgModule({
-  declarations: [AppComponent, PodcastListComponent, PodcastListItemComponent, PodcastDetailsComponent, FilterPodcastsPipe],
+  declarations: [AppComponent, PodcastListComponent, PodcastListItemComponent, PodcastDetailsComponent, FilterPodcastsPipe, LoadingSpinnerComponent],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],

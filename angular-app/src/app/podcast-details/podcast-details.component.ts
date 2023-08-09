@@ -35,12 +35,14 @@ export class PodcastDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.isLoading = true;
+    
     // Get the podcast from the state
     this.route.params.subscribe((params) => {
       this.receivedPodcast = history.state.podcast;
     });
 
-    this.isLoading = true;
+    
     // La API dóna error de CORS, per això s'ha de fer servir un proxy
     // i la logica d'aquest component s'acaba complicant
 
