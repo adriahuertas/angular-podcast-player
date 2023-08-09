@@ -1,0 +1,50 @@
+.list-item {
+    width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &__image-container {
+        width: 120px;
+        /* Adjust the width and height as needed */
+        height: 120px;
+        border-radius: 50%;
+        overflow: hidden;
+        /* Hide any overflow content beyond the circle */
+        position: relative;
+        /* For centering the image */
+        transform: translateY(-25%);
+    }
+
+    img {
+        width: 100%;
+        /* Make the image take up the full circle container */
+        height: 100%;
+        object-fit: cover;
+        /* Maintain aspect ratio and cover the container */
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+
+    &__content {
+        padding: 16px;
+        text-align: center;
+    }
+
+    &__title {
+        font-size: 18px;
+        margin-top: -30px;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+    }
+
+    &__author {
+        font-size: 14px;
+        color: #666666;
+    }
+}

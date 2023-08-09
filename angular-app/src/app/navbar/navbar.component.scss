@@ -1,0 +1,17 @@
+.navbar {
+    ul {
+        list-style: none;
+border-bottom: 1px solid #ccc;
+        li {
+            a {
+                text-decoration: none;
+                color: rgb(45, 45, 255);
+                font-weight: bold;
+                font-size: 1.5em;
+            }
+        }
+    }
+
+    padding-bottom: 20px;
+
+}
