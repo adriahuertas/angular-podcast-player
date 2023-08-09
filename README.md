@@ -24,3 +24,18 @@ Another example!
 ![alt text](./screenshots/img2.png)
 
 ## How to install it
+
+### With Docker (recommended)
+
+1- Download repository
+2- Run: docker compose up --build
+3- Go to http://localhost:4200
+
+### Without Docker
+
+1- Download repository
+2- cd angular-app
+3- npm install
+4- ng serve
+5- Go to http://localhost:4200
+
