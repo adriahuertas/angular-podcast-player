@@ -1,0 +1,8 @@
+version: '1.0.0'
+
+services:
+  angular-app:
+    container_name: angular-app
+    build: angular-app
+    ports:
+      - "4200:4200"
