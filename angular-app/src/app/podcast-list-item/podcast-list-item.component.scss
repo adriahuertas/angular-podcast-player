@@ -6,6 +6,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    // Make the cursor a pointer when hovering over the list item
+    cursor: pointer;
 
     &__image-container {
         width: 120px;

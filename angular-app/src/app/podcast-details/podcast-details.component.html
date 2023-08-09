@@ -11,7 +11,9 @@
         <ul *ngFor="let episode of podcastDetails.episodeList">
           <li (click)="handleEpisodeClick(episode)">{{episode.title}}</li>
           <li>{{episode.date}}</li>
-          <li>{{episode.duration}}</li>
+          <!-- La API a vegades no retorna la duracio dels capitols, per tant 
+          només la mostrem si està disponible -->
+          <li *ngIf="episode.duration">{{episode.duration}}</li>
         </ul>
       </div>
     </div>

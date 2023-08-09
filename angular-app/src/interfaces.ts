@@ -12,7 +12,7 @@ export interface EpisodeData {
   date: string; // releaseDate
   url: string; // episodeUrl
   description: string; // description
-  duration: string; // trackTimeMillis
+  duration?: string; // trackTimeMillis
 }
 
 export interface PodcastDetails {
