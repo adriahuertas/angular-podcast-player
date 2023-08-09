@@ -1,3 +1,5 @@
+import { SafeHtml } from "@angular/platform-browser";
+
 export interface PodcastData {
   id: string;
   title: string;
@@ -11,7 +13,7 @@ export interface EpisodeData {
   title: string; // trackName
   date: string; // releaseDate
   url: string; // episodeUrl
-  description: string; // description
+  description: SafeHtml; // description
   duration?: string; // trackTimeMillis
 }
 

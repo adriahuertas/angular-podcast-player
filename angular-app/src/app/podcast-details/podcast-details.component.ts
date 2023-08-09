@@ -84,7 +84,7 @@ export class PodcastDetailsComponent implements OnInit {
                 date: item['releaseDate'],
                 url: item['episodeUrl'],
                 // Escape the description
-                description: this.sanitizer.bypassSecurityTrustHtml(item['description']).toString(),
+                description: this.sanitizer.bypassSecurityTrustHtml(item['description']),
                 duration: convertMsToTime(item['trackTimeMillis']),
               });
             }
