@@ -17,7 +17,7 @@
     </div>
     <div *ngIf="episodeSelected">
       <h3>{{episodeSelected.title}}</h3>
-      <p>{{episodeSelected.description}}</p>
+      <p [innerHTML]="episodeSelected.description"></p>
       <audio controls>
         <source src="{{episodeSelected.url}}" type="audio/mpeg">
         Your browser does not support the audio element.
