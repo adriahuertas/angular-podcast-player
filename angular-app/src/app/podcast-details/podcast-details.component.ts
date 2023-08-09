@@ -25,7 +25,7 @@ export class PodcastDetailsComponent implements OnInit {
   episodeSelected?: EpisodeData;
 
 
-  constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {}
+  constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) { }
 
   handleEpisodeClick(episode: EpisodeData): void {
     this.episodeSelected = episode;
@@ -36,13 +36,13 @@ export class PodcastDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.isLoading = true;
-    
+
     // Get the podcast from the state
     this.route.params.subscribe((params) => {
       this.receivedPodcast = history.state.podcast;
     });
 
-    
+
     // La API dóna error de CORS, per això s'ha de fer servir un proxy
     // i la logica d'aquest component s'acaba complicant
 
@@ -81,12 +81,13 @@ export class PodcastDetailsComponent implements OnInit {
               this.podcastDetails.episodeList.push({
                 id: item['trackId'],
                 title: item['trackName'],
-                date: item['releaseDate'],
+                date: new Date(item['releaseDate']).toLocaleDateString(),
                 url: item['episodeUrl'],
                 // Escape the description
-                description: this.sanitizer.bypassSecurityTrustHtml(item['description']),
+                description: item['description'],
                 duration: convertMsToTime(item['trackTimeMillis']),
               });
+              console.log(this.podcastDetails.episodeList[0].description)
             }
           });
           this.podcastDetails.episodeNumber =
