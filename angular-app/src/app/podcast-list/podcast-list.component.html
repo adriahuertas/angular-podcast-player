@@ -1,7 +1,11 @@
+<div>
+  <input type="text" placeholder="Filter Podcasts..." [(ngModel)]="searchText" />
+</div>
+
 <div class="list">
   <h3>Podcast List</h3>
   <app-podcast-list-item
-    *ngFor="let podcast of podcasts"
+    *ngFor="let podcast of podcasts | filterPodcasts: searchText"
     [podcast]="podcast"
   ></app-podcast-list-item>
 </div>

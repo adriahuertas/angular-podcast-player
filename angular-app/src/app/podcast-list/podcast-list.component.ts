@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { ApiPodcastListService } from '../api-podcast-list.service';
 
 import { PodcastData } from '../../interfaces';
@@ -11,6 +11,7 @@ import { PodcastData } from '../../interfaces';
 export class PodcastListComponent implements OnInit {
   isLoading: boolean = false;
   podcasts: Array<PodcastData> = [];
+  searchText: string = '';
 
   constructor(private apiPodcastListService: ApiPodcastListService) {}
   // When mounting the component
