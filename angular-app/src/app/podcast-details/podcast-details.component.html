@@ -3,4 +3,13 @@
   <p>{{ receivedPodcast.title }}</p>
   <p>{{ receivedPodcast.description }}</p>
 </div>
-<div></div>
+<div>
+  <p>Episodes: {{podcastDetails.episodeNumber}}</p>
+  <div>
+    <ul *ngFor="let episode of podcastDetails.episodeList">
+      <li>{{episode.title}}</li>
+      <li>{{episode.date}}</li>
+      <li>{{episode.duration}}</li>
+    </ul>
+  </div>
+</div>
