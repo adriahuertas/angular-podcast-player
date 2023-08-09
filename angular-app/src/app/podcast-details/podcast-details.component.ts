@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { have24HoursPassed, convertMsToTime } from '../date-utilities';
 import { PodcastData, PodcastDetails, EpisodeData } from 'src/interfaces';
@@ -11,6 +12,7 @@ import { PodcastData, PodcastDetails, EpisodeData } from 'src/interfaces';
 })
 export class PodcastDetailsComponent implements OnInit {
   @Input() podcastId: string = '';
+  @Input() episodeId: string = '';
   txtData: any = '';
   baseUrl: string =
     'https://itunes.apple.com/lookup?media=podcast&entity=podcastEpisode&limit=20&id=';
@@ -20,8 +22,17 @@ export class PodcastDetailsComponent implements OnInit {
     episodeNumber: 0,
     episodeList: [],
   };
+  episodeSelected?: EpisodeData;
 
-  constructor(private route: ActivatedRoute) {}
+
+  constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) {}
+
+  handleEpisodeClick(episode: EpisodeData): void {
+    this.episodeSelected = episode;
+  }
+  handleReturnToPodcastDetailsClick(): void {
+    this.episodeSelected = undefined;
+  }
 
   ngOnInit(): void {
     // Get the podcast from the state
@@ -70,7 +81,8 @@ export class PodcastDetailsComponent implements OnInit {
                 title: item['trackName'],
                 date: item['releaseDate'],
                 url: item['episodeUrl'],
-                description: item['description'],
+                // Escape the description
+                description: this.sanitizer.bypassSecurityTrustHtml(item['description']).toString(),
                 duration: convertMsToTime(item['trackTimeMillis']),
               });
             }
