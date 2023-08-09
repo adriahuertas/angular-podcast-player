@@ -1,14 +1,25 @@
 :host {
     display: flex;
     flex-direction: column;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
     height: 100%;
     flex-wrap: wrap;
 
     .app-container {
+        width: 70%;
+        padding: 20px; 
+        
+        // Media query to set width to 90% when the screen is between 1200px and 700px
+        @media (max-width: 1200px) {
+            width: 90%;
+        }
 
-        max-width: 1200px;
-        padding: 20px;
+        // Media query to set width to 100% when the screen is less than 700px
+        @media (max-width: 700px) {
+            width: 100%;
+        }
     }
 }
