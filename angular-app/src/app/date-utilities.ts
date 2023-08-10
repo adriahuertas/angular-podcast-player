@@ -17,6 +17,7 @@ export const have24HoursPassed = (
 const padTo2Digits = (num: number) => {
   return num.toString().padStart(2, '0');
 };
+
 // Function to convert milliseconds to minutes and seconds
 export const convertMsToTime = (milliseconds: number): string => {
   let seconds = Math.floor(milliseconds / 1000);
