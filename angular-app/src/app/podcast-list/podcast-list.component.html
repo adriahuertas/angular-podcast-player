@@ -1,11 +1,19 @@
-<div>
-  <input
-</div>
+<div *ngIf="!isLoading" class="page-container">
+  <div class="search-form">
+    <p class="search-form__text">100</p>
+    <input
+      class="search-form__input"
+      type="text"
+      placeholder="Filter Podcasts..."
+      [(ngModel)]="searchText"
+    />
+  </div>
 
-<div class="list">
-  <h3>Podcast List</h3>
-  <app-podcast-list-item
-    *ngFor="let podcast of podcasts"
-    [podcast]="podcast"
-  ></app-podcast-list-item>
+  <div class="list">
+    <app-podcast-list-item
+      *ngFor="let podcast of podcasts | filterPodcasts : searchText"
+      [podcast]="podcast"
+    ></app-podcast-list-item>
+  </div>
 </div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

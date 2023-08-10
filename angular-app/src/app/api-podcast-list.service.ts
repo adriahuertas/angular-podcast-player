@@ -46,6 +46,7 @@ export class ApiPodcastListService {
           title: item['im:name'].label,
           author: item['im:artist'].label,
           image: item['im:image'][0].label,
+          biggerImage: item['im:image'][2].label,
           description: item['summary'].label,
         }));
 

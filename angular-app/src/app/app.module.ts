@@ -7,10 +7,14 @@ import { AppComponent } from './app.component';
 import { PodcastListComponent } from './podcast-list/podcast-list.component';
 import { PodcastListItemComponent } from './podcast-list-item/podcast-list-item.component';
 import { PodcastDetailsComponent } from './podcast-details/podcast-details.component';
+import { FormsModule } from '@angular/forms';
+import { FilterPodcastsPipe } from './filter-podcasts.pipe';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
-  declarations: [AppComponent, PodcastListComponent, PodcastListItemComponent, PodcastDetailsComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule],
+  declarations: [AppComponent, PodcastListComponent, PodcastListItemComponent, PodcastDetailsComponent, FilterPodcastsPipe, LoadingSpinnerComponent, NavbarComponent],
+  imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
 })

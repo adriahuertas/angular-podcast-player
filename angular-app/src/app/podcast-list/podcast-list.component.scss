@@ -1,0 +1,33 @@
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    * {
+        border-radius: 5px;
+    }
+
+    .search-form__input {
+        width: 200px;
+        border: 1px solid #ccc;
+        padding: 5px;
+        margin-left: 10px;
+
+    }
+    .search-form__text {
+        color: white;
+        font-weight: bold;
+        background: rgb(74, 74, 255);
+        border: 1px solid rgb(74, 74, 255);
+        padding: 2px;
+    }
+
+}
+
+.list {
+    padding-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    row-gap: 150px;
+    justify-content: center;
+}

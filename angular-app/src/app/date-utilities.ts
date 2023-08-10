@@ -19,7 +19,9 @@ const padTo2Digits = (num: number) => {
 };
 
 // Function to convert milliseconds to minutes and seconds
-export const convertMsToTime = (milliseconds: number): string => {
+export const convertMsToTime = (milliseconds: number): string|undefined => {
+  // Sometimes there is no duration in the api information, so we return undefined
+  if (!milliseconds) return undefined;
   let seconds = Math.floor(milliseconds / 1000);
   let minutes = Math.floor(seconds / 60);
   let hours = Math.floor(minutes / 60);

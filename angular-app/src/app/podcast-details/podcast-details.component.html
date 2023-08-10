@@ -1,6 +1,42 @@
-<div>
-  <img src="{{ receivedPodcast.image }}" />
-  <p>{{ receivedPodcast.title }}</p>
-  <p>{{ receivedPodcast.description }}</p>
+<div *ngIf="!isLoading" class="page-flex-container">
+  <div (click)="handleReturnToPodcastDetailsClick()" class="card-podcast-info">
+    <div class="card-podcast-info__image-container">
+      <img src="{{ receivedPodcast.biggerImage }}" />
+    </div>
+    <p class="card-podcast-info__title">{{ receivedPodcast.title }}</p>
+    <p class="card-podcast-info__description">{{ receivedPodcast.description }}</p>
+  </div>
+  <div class="card-podcast-episodes" *ngIf="!episodeSelected">
+    <p class="card-podcast-episodes__num-episodes">Episodes: {{podcastDetails.episodeNumber}}</p>
+    <div class="card-podcast-episodes__episodes-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Date</th>
+            <th>Duration</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let episode of podcastDetails.episodeList">
+            <td (click)="handleEpisodeClick(episode)">{{episode.title}}</td>
+            <td>{{episode.date}}</td>
+            <td *ngIf="episode.duration">{{episode.duration}}</td>
+            <td *ngIf="!episode.duration">Unknown</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class="card-podcast-episode-selected" *ngIf="episodeSelected">
+    <h3>{{episodeSelected.title}}</h3>
+    <p [innerHTML]="episodeSelected.description"></p>
+    <audio controls>
+      <source src="{{episodeSelected.url}}" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+  </div>
+
 </div>
-<div></div>
+<app-loading-spinner *ngIf="isLoading"></app-loading-spinner>

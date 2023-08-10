@@ -1,5 +1,10 @@
 <div class="list-item" (click)="handlePodcastClick()">
-  <p>{{ podcast.title }}</p>
-  <p>{{ podcast.author }}</p>
-  <img src="{{ podcast.image }}" alt="Caratula" />
+  <div class="list-item__image-container">
+    <img src="{{ podcast.image }}" alt="Caratula" />
+  </div>
+  <div class="list-item__content">
+    <p class="list-item__title">{{ podcast.title }}</p>
+    <p class="list-item__author">Author: {{ podcast.author }}</p>
+  </div>
+
 </div>

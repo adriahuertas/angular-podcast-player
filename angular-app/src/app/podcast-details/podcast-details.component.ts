@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 import { have24HoursPassed, convertMsToTime } from '../date-utilities';
 import { PodcastData, PodcastDetails, EpisodeData } from 'src/interfaces';
@@ -11,6 +12,7 @@ import { PodcastData, PodcastDetails, EpisodeData } from 'src/interfaces';
 })
 export class PodcastDetailsComponent implements OnInit {
   @Input() podcastId: string = '';
+  @Input() episodeId: string = '';
   txtData: any = '';
   baseUrl: string =
     'https://itunes.apple.com/lookup?media=podcast&entity=podcastEpisode&limit=20&id=';
@@ -20,16 +22,27 @@ export class PodcastDetailsComponent implements OnInit {
     episodeNumber: 0,
     episodeList: [],
   };
+  episodeSelected?: EpisodeData;
 
-  constructor(private route: ActivatedRoute) {}
+
+  constructor(private route: ActivatedRoute, private router: Router, private sanitizer: DomSanitizer) { }
+
+  handleEpisodeClick(episode: EpisodeData): void {
+    this.episodeSelected = episode;
+  }
+  handleReturnToPodcastDetailsClick(): void {
+    this.episodeSelected = undefined;
+  }
 
   ngOnInit(): void {
+    this.isLoading = true;
+
     // Get the podcast from the state
     this.route.params.subscribe((params) => {
       this.receivedPodcast = history.state.podcast;
     });
 
-    this.isLoading = true;
+
     // La API dóna error de CORS, per això s'ha de fer servir un proxy
     // i la logica d'aquest component s'acaba complicant
 
@@ -68,11 +81,13 @@ export class PodcastDetailsComponent implements OnInit {
               this.podcastDetails.episodeList.push({
                 id: item['trackId'],
                 title: item['trackName'],
-                date: item['releaseDate'],
+                date: new Date(item['releaseDate']).toLocaleDateString(),
                 url: item['episodeUrl'],
+                // Escape the description
                 description: item['description'],
                 duration: convertMsToTime(item['trackTimeMillis']),
               });
+              console.log(this.podcastDetails.episodeList[0].description)
             }
           });
           this.podcastDetails.episodeNumber =
