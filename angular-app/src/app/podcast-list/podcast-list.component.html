@@ -1,6 +1,6 @@
 <div *ngIf="!isLoading" class="page-container">
   <div class="search-form">
-    <p class="search-form__text">100</p>
+    <p class="search-form__text">{{(podcasts | filterPodcasts : searchText).length}}</p>
     <input
       class="search-form__input"
       type="text"
