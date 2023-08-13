@@ -1,7 +1,7 @@
 # front-end-test
 
-This is an angular application. Its main purpose is to fetch data from the itunes API about Podcasts  
-and reproducing them.
+This is a demo application made with Angular. This app is a podcast player. It fetches podcast info  
+from itunes API.
 
 It uses flex containers and simple media queries to be responsive. Here are some screenshots:
 
