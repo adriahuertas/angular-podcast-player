@@ -1,4 +1,4 @@
-# front-end-test
+# Angular podcast player
 
 This is a demo application made with Angular. This app is a podcast player. It fetches podcast info  
 from itunes API.
