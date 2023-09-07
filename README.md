@@ -3,9 +3,15 @@
 This is a demo application made with Angular. This app is a podcast player. It fetches podcast info  
 from itunes API.
 
-It uses flex containers and simple media queries to be responsive. Here are some screenshots:
+It uses flex containers and simple media queries to be responsive.
+
+## You can check it out on netlify
+
+[Podcast player](https://tranquil-jelly-a91e15.netlify.app/)
 
 ## Screenshots
+
+Here are some screenshots:
 
 ### View 1. Desktop version
 
